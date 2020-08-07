@@ -193,7 +193,7 @@ $(document).ready(function() {
         },
     });
 
-    $('.custom-select').selectric();
+    $('.custom-select select').selectric();
     var checkMap = document.querySelector('#map');
     if (checkMap) {
         ymaps.ready(init);
