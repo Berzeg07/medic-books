@@ -20,6 +20,83 @@ $(document).ready(function() {
         $('.dropdown-menu').toggleClass('is-active');
     });
 
+    $('.custom-select select').selectric();
+
+    var myAdvSlider = undefined;
+
+    function initSwiper() {
+        var screenWidth = $(window).width();
+        if (screenWidth > 991 && myAdvSlider == undefined) {
+            var advSlider = new Swiper('.adv-slider', {
+                slidesPerView: 4,
+                spaceBetween: 38,
+                loop: true,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+
+                breakpoints: {
+
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    1279: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1840: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                }
+            });
+        } else if (screenWidth < 992 && myAdvSlider != undefined) {
+            myAdvSlider.destroy();
+            myAdvSlider = undefined;
+        }
+    }
+
+    //Swiper plugin initialization
+    initSwiper();
+
+    //Swiper plugin initialization on window resize
+    $(window).on('resize', function() {
+        initSwiper();
+    });
+
+    // var advSlider = new Swiper('.adv-slider', {
+    //     slidesPerView: 4,
+    //     spaceBetween: 38,
+    //     loop: true,
+    //     navigation: {
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
+    //     },
+    //     breakpoints: {
+    //         640: {
+    //             slidesPerView: 1,
+    //             spaceBetween: 20,
+    //         },
+    //         1279: {
+    //             slidesPerView: 2,
+    //             spaceBetween: 20,
+    //         },
+    //         1840: {
+    //             slidesPerView: 3,
+    //             spaceBetween: 20,
+    //         },
+    //     }
+    // });
+
+
+
+
 
 
 
@@ -48,73 +125,9 @@ $(document).ready(function() {
 
 
 
-    var filialSlider = new Swiper('.filials-slider', {
-        slidesPerView: 4,
-        spaceBetween: 38,
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next-n',
-            prevEl: '.swiper-button-prev-p',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-            1279: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            1840: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-        }
-    });
 
-    var myAdvSlider = undefined;
 
-    function initSwiper() {
-        var screenWidth = $(window).width();
-        if (screenWidth > 991 && myAdvSlider == undefined) {
-            var advSlider = new Swiper('.advantag-slider', {
-                slidesPerView: 4,
-                spaceBetween: 38,
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
 
-                breakpoints: {
-
-                    1279: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    1599: {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                }
-            });
-        } else if (screenWidth < 992 && myAdvSlider != undefined) {
-            mySwiper.destroy();
-            mySwiper = undefined;
-        }
-    }
-
-    //Swiper plugin initialization
-    initSwiper();
-
-    //Swiper plugin initialization on window resize
-    $(window).on('resize', function() {
-        initSwiper();
-    });
 
     var catSlider = new Swiper('.cat-slider', {
         slidesPerView: 6,
@@ -193,7 +206,7 @@ $(document).ready(function() {
         },
     });
 
-    $('.custom-select select').selectric();
+
     var checkMap = document.querySelector('#map');
     if (checkMap) {
         ymaps.ready(init);
