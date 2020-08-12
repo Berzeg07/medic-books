@@ -1248,6 +1248,9 @@
 
 .adv-slider {
     padding-bottom: 70px;
+    @media(max-width: 991px) {
+        padding-bottom: 25px;
+    }
     .swiper-slide {
         display: flex;
         justify-content: center;
@@ -1758,4 +1761,40 @@
 .licence {
     margin-bottom: 90px;
     padding-top: 30px;
+}
+
+.breadcrumbs {
+    background: #F4F8FD;
+    padding: 15px 24px;
+    a {
+        font-size: 15px;
+        display: inline-block;
+        color: #8A8A8A;
+        margin-right: 25px;
+        position: relative;
+        @media(max-width: 767px) {
+            margin-bottom: 5px;
+        }
+        &:not(:last-child) {
+            position: relative;
+            &:after {
+                content: '/';
+                position: absolute;
+                right: -14px;
+                top: 1px;
+                font-size: 12px;
+            }
+            &:hover {
+                color: #42ACDC;
+            }
+        }
+    }
+}
+
+.prices_inner {
+    padding-top: 70px;
+}
+
+.about-us_inner {
+    padding-top: 50px;
 }
